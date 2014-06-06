@@ -4,11 +4,13 @@
 import sys, os
 from PyQt4 import QtGui, QtCore
 
-sys.path.append(os.path.expanduser('~/Documents/Code/Tools/'))
-from ConvertFormula.parser_line import ParserLine
-from ConvertFormula.parser_text import ParserText
-from ConvertFormula.formatter import Formatter
-from ConvertFormula.language import LanguageMathematica, LanguagePython
+# add parent directory to path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from src.parser_line import ParserLine
+from src.parser_text import ParserText
+from src.formatter import Formatter
+from src.language import LanguageMathematica, LanguagePython
 
 class GUI(QtGui.QWidget):
     """ Class containing the graphical user interface """
