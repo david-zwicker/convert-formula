@@ -20,29 +20,29 @@ def parse_line(s, style='python'):
     else:
         parser = parser_mathematica
     parser.parse_string(s)
-    print 'parse:', parser.result_parse
-    print 'stack:', parser.result_stack
-    print 'nested:', parser.result_nested
-    print formatter(parser)
-    print s
+    print('parse: %r' % parser.result_parse)
+    print('stack: %r' % parser.result_stack)
+    print('nested: %r' % parser.result_nested)
+    print(formatter(parser))
+    print(s)
 
 
 def parse_text(s, optimize=True):
     parser_text.parse_text(s)
     parser_text.get_cost()
-    print parser_text.result
-    print formatter(parser_text)
-    #print parser.expr_stack
+    print(parser_text.result)
+    print(formatter(parser_text))
+    #print(parser.expr_stack
     if optimize:
-        print parser_text.get_cost()
-        print parser_text.optimize_runtime()
-        print formatter(parser_text)
+        print(parser_text.get_cost())
+        print(parser_text.optimize_runtime())
+        print(formatter(parser_text))
 
 
-#print parser.parse_string( "var = unknown(0.) + unknown" )
-#print parser.expr_stack
-#print parser.get_nested_structure()
-#print ParserOutputPython()( parser )
+#print(parser.parse_string( "var = unknown(0.) + unknown" )
+#print(parser.expr_stack
+#print(parser.get_nested_structure()
+#print(ParserOutputPython()( parser )
 
 #show_parse( "4", False )
 #show_parse( "-(4+5)", False )

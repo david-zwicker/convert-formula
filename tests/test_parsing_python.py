@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
-import unittest2 as unittest
+try:
+    import unittest2 as unittest
+except ImportError:
+    import unittest
 
 import sys
 import random
@@ -28,10 +31,10 @@ class ParserPythonCheck(unittest.TestCase):
 
     
     def show_parse(self, s):
-        print self.parser.parse_string(s)
-        print self.parser.expr_stack
-        print self.parser.get_nested_structure()
-        print self.formatter(self.parser)
+        print(self.parser.parse_string(s))
+        print(self.parser.expr_stack)
+        print(self.parser.get_nested_structure())
+        print(self.formatter(self.parser))
 
 
     def _get_token(self, depth=0):

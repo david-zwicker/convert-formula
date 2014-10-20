@@ -1,9 +1,9 @@
 """ Defines classes which can convert the parsed formula into the style of a
 certain language """
 
-from parser_line import ParserLine
-from parser_text import ParserText
-from language import LanguageBase
+from .parser_line import ParserLine
+from .parser_text import ParserText
+from .language import LanguageBase
 
 
 def _operator_associative(token, a_id=0):

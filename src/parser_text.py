@@ -3,7 +3,7 @@ supports some optimizations on the expression tree, where common subexpressions
 are calculated once and stored in a temporary variable.
 """
 
-from parser_line import ParserLine
+from .parser_line import ParserLine
 
 from collections import defaultdict
 import copy

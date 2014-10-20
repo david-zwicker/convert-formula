@@ -7,14 +7,14 @@ of the pyparsing webpage. The code was written by `Paul McGuire`.
 
 import copy
 from pyparsing import Optional, ZeroOrMore, Forward, downcaseTokens
-from language import LanguageBase
+from .language import LanguageBase
 
 
 def _show_token(strg, loc, toks):
     """ Auxilariy function for printing the current token """
-    print "Strg:", strg
-    print "Loc:", loc
-    print "Toks:", toks
+    print("Strg: %r" % strg)
+    print("Loc: %r" % loc)
+    print("Toks: %r" % toks)
 
 
 class ParserLine(object):
