@@ -103,6 +103,7 @@ class LanguagePython(LanguageBase):
                   'sqrt': 'np.sqrt',
                   'trunc': 'np.trunc',
                   'sphericalharmonic': 'sph_harm',
+                  'expintegrale': 'scipy.special.expn',
                   'gamma': 'gamma',
                 }
 
@@ -166,6 +167,7 @@ class LanguageMathematica(LanguageBase):
                   'sqrt': 'Sqrt',
                   'trunc': 'Trunc',
                   'sphericalharmonic': 'SphericalHarmonicY',
+                  'expintegrale': 'ExpIntegralE',
                   'gamma': 'Gamma'
                 }
 

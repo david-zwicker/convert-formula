@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 """ This file contains a graphical application for converting code """
 
 import sys, os
