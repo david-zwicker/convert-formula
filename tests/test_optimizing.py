@@ -32,7 +32,7 @@ class ParserOptimizeCheck(ParserPythonCheck):
         tokens[-1] = { 'op':'=', 'pos':'infix', 'args':['result', tokens[-1]] }
         expr = self.formatter(tokens)
         if glob is not None:
-            for k, v in glob.iteritems():
+            for k, v in glob.items():
                 expr = expr.replace(k, str(v))
                 
         # execute python code

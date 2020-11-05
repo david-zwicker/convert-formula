@@ -1,16 +1,17 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 """ This file contains a graphical application for converting code """
 
 import sys, os
 from PyQt4 import QtGui, QtCore
 
 # add parent directory to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from src.parser_line import ParserLine
 from src.parser_text import ParserText
 from src.formatter import Formatter
 from src.language import LanguageMathematica, LanguagePython
+
 
 class GUI(QtGui.QWidget):
     """ Class containing the graphical user interface """
@@ -25,30 +26,25 @@ class GUI(QtGui.QWidget):
         self.formatter = Formatter(LanguagePython(int2float=True))
 
         # Quit Button
-        quitButton = QtGui.QPushButton('Close', self)
+        quitButton = QtGui.QPushButton("Close", self)
         self.connect(
-            quitButton, QtCore.SIGNAL('clicked()'),
-            QtGui.qApp, QtCore.SLOT('quit()')
-       )
-        convertButton = QtGui.QPushButton('Convert', self)
-        self.connect(
-            convertButton, QtCore.SIGNAL('clicked()'), self.onChanged
-       )
+            quitButton, QtCore.SIGNAL("clicked()"), QtGui.qApp, QtCore.SLOT("quit()")
+        )
+        convertButton = QtGui.QPushButton("Convert", self)
+        self.connect(convertButton, QtCore.SIGNAL("clicked()"), self.onChanged)
 
         # Widgets
-        self.matLabel = QtGui.QLabel('Mathematica Code:')
+        self.matLabel = QtGui.QLabel("Mathematica Code:")
         self.matEdit = QtGui.QTextEdit()
-        self.pyLabel = QtGui.QLabel('Python Code:')
+        self.pyLabel = QtGui.QLabel("Python Code:")
         self.pyEdit = QtGui.QTextEdit()
+        self.connect(self.matEdit, QtCore.SIGNAL("textChanged()"), self.onChanged)
+        self.multilineCb = QtGui.QCheckBox("Support Multiple Lines", self)
         self.connect(
-            self.matEdit, QtCore.SIGNAL('textChanged()'),
-            self.onChanged
-       )
-        self.multilineCb = QtGui.QCheckBox('Support Multiple Lines', self)
-        self.connect(
-            self.multilineCb, QtCore.SIGNAL('stateChanged(int)'),
-            lambda i:self.onChanged()
-       )
+            self.multilineCb,
+            QtCore.SIGNAL("stateChanged(int)"),
+            lambda i: self.onChanged(),
+        )
 
         # Bottom Row
         bottomRow = QtGui.QHBoxLayout()
@@ -67,9 +63,8 @@ class GUI(QtGui.QWidget):
 
         # set layout
         self.setLayout(vbox)
-        self.setWindowTitle('Mathematica to Python Converter')
+        self.setWindowTitle("Mathematica to Python Converter")
         self.resize(500, 350)
-
 
     def onChanged(self):
         """ function doing the actual conversion """
@@ -81,18 +76,18 @@ class GUI(QtGui.QWidget):
                 pyCode = self.formatter(self.text_parser)
 
             else:
-                matCode = ' '.join(matCode.splitlines())
+                matCode = " ".join(matCode.splitlines())
                 output = self.line_parser.parse_string(matCode)
                 pyCode = self.formatter(output)
 
             self.pyEdit.setText(pyCode)
-            self.pyLabel.setText('Python Code:')
+            self.pyLabel.setText("Python Code:")
 
         except Exception:
-            if hasattr(self, 'pyLabel'):
+            if hasattr(self, "pyLabel"):
                 self.pyLabel.setText(
                     'Python Code <font color="#FF0000">(invalid)</font>:'
-               )
+                )
 
 
 # setup QT application
